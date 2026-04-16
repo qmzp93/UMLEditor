@@ -1,6 +1,6 @@
 import java.awt.*;
 
-// Link: 負責管理兩個 BaseObject 之間的連結關係，並根據 UML 類型繪製箭頭
+// 負責管理兩個 BaseObject 之間的連結關係，並根據 UML 類型繪製箭頭
 public class Link {
     private BaseObject startObj, endObj;
     private int startPortIndex, endPortIndex;

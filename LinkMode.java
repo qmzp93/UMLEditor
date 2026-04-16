@@ -2,7 +2,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-//處理建立連線的狀態類別
+// 處理建立連線的狀態類別
 public class LinkMode implements Mode {
     private CanvasArea canvas;
     private String type;    

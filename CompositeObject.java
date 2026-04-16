@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// CompositeObject: 實現組合模式的類別，將多個 BaseObject 組合為單一邏輯單元
+// 實現組合模式的類別，將多個 BaseObject 組合為單一邏輯單元
 public class CompositeObject extends BaseObject {
     private List<BaseObject> children = new ArrayList<>();
 
@@ -18,10 +18,7 @@ public class CompositeObject extends BaseObject {
     //  回傳所有子物件，用於 Ungroup (解群組) 操作
     public List<BaseObject> getChildren() { return children; }
 
-    /**
-     * 計算並更新群組的邊界矩形 (Bounding Box)
-     * 規格要求：群組範圍必須完全包含所有子物件的最小矩形區域
-     */
+    // 計算並更新群組的邊界矩形 (Bounding Box)
     public void updateBounds() {
         if (children.isEmpty()) return;
         int minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE;
@@ -67,7 +64,7 @@ public class CompositeObject extends BaseObject {
             obj.draw(g);
         }
         // Use Case D: 被選取時顯示虛線藍色外框
-        if (isSelected()) {
+        if (isSelected() || isHovered()) {
             Graphics2D g2d = (Graphics2D) g;
             Stroke oldStroke = g2d.getStroke(); // 保存當前筆觸，以便之後恢復，避免影響子物件的繪製
 

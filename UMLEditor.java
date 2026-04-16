@@ -75,8 +75,8 @@ public class UMLEditor extends JFrame {
             btn.setBackground(Color.WHITE);
             btn.setFocusPainted(false);
 
-            btn.setContentAreaFilled(false);     // 1. 禁用預設的按鈕區域填色邏輯
-            btn.setOpaque(true);          // 2. 確保按鈕會畫出我們設定的背景色
+            btn.setContentAreaFilled(false);     // 禁用預設的按鈕區域填色邏輯
+            btn.setOpaque(true);          // 確保按鈕會畫出我們設定的背景色
 
             toolButtons.add(btn);
             sideBar.add(btn);
