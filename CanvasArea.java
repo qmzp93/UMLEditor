@@ -40,8 +40,8 @@ class CanvasArea extends JPanel {
                 }
             }
         };
-        addMouseListener(mouseAdapter);
-        addMouseMotionListener(mouseAdapter);
+        addMouseListener(mouseAdapter);         // 按下 放開 點擊
+        addMouseMotionListener(mouseAdapter);   // 移動 拖曳
     }
 
     public void setMode(Mode mode) {
@@ -108,7 +108,6 @@ class CanvasArea extends JPanel {
         }
 
     }
-
     
     // 尋找被點擊的物件
     public BaseObject findObjectAt(int x, int y) {

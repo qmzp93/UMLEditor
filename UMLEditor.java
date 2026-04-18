@@ -7,8 +7,8 @@ import java.util.List;
 public class UMLEditor extends JFrame {
     private CanvasArea canvas;
     private List<JButton> toolButtons = new ArrayList<>(); /// 所有的左側工具按鈕
-    private JButton activeToolButton; // 紀錄目前「真正」選中的模式按鈕 (例如 Select 或 Link)
-    private Mode activeMode;         // 紀錄目前「真正」選中的模式物件 (用於 State Pattern)
+    private JButton activeToolButton;   // 紀錄目前「真正」選中的模式按鈕 (例如 Select 或 Link)
+    private Mode activeMode;            // 紀錄目前「真正」選中的模式物件 (用於 State Pattern)
 
     public UMLEditor() {
         setTitle("Oops UML Editor");

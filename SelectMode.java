@@ -24,9 +24,9 @@ public class SelectMode implements Mode {
 
         // --- 處理 Resize (縮放) 判定 ---
         // 只有物件已被選取且非群組物件 (Composite) 時才允許縮放
-        if (this.selectedObject != null && this.selectedObject.isSelected()) {
+        if (selectedObject != null && selectedObject.isSelected()) {
             // Composite 物件無法縮放 
-            if (!(this.selectedObject instanceof CompositeObject)) {
+            if (!(selectedObject instanceof CompositeObject)) {
                 resizePortIndex = findPortAt(selectedObject, e.getPoint());
                 if (resizePortIndex != -1) {
                     // Oval 只有四邊中點，將其索引 0-3 映射到基類的 4-7 (中點縮放邏輯)
@@ -43,8 +43,10 @@ public class SelectMode implements Mode {
         selectedObject = canvas.findObjectAt(e.getX(), e.getY());
         // --- 處理 Select/Move (選取與移動) 判定 ---
         if (selectedObject != null) {
-            canvas.unselectAll();
-            selectedObject.setSelected(true);
+            if (!selectedObject.isSelected()) {
+                canvas.unselectAll();
+                selectedObject.setSelected(true);
+            }
             canvas.moveObjectToFront(selectedObject); // 最後選取的繪製於最上層 
             resizePortIndex = -1;
         } else {
@@ -103,8 +105,13 @@ public class SelectMode implements Mode {
             int dx = e.getX() - lastPoint.x;
             int dy = e.getY() - lastPoint.y;
 
-            selectedObject.setX(selectedObject.getX() + dx);
-            selectedObject.setY(selectedObject.getY() + dy);
+            for (BaseObject obj : canvas.getAllObjects()) {
+                // 只要物件處於「選取狀態」，就同步套用位移量
+                if (obj.isSelected()) {
+                    obj.setX(obj.getX() + dx);
+                    obj.setY(obj.getY() + dy);
+                }
+            }
             lastPoint = e.getPoint();
         }
         canvas.repaint();
